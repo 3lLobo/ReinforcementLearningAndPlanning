@@ -3,6 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-data = pd.read_csv('Ogrid_8.csv')
-ax = sns.heatmap(data)
-plt.show()
+labels = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+runs = 10
+for n in range(runs):
+    data = pd.read_csv('./data/Vgrid_%d.csv' % n)
+
+    ax = sns.heatmap(data, robust=True)
+    plt.savefig('./plots/Valueheatmap%d.png' % n)
+    plt.close()
